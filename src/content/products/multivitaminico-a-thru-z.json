@@ -1,0 +1,16 @@
+{
+  "name": "multivitaminico-a-thru-z",
+  "brand": "Earth's Creation",
+  "price": "170.000 Gs",
+  "category": "Vitaminas",
+  "description": "La fórmula más completa para el bienestar diario.",
+  "fullDescription": "Aporta vitaminas y minerales esenciales diseñados para apoyar la salud de la piel, huesos, corazón y órganos. Disponible en fórmulas personalizadas según la necesidad (Women, Senior, Normal).",
+  "format": "100 Cápsulas",
+  "usage": "Tomar una cápsula al día con el desayuno.",
+  "benefits": [
+    "Apoya la salud integral del organismo",
+    "Favorece una piel saludable",
+    "Promueve la salud ósea"
+  ],
+  "image": "/assets/products/multivitaminico-a-thru-z/image.jpg"
+}
