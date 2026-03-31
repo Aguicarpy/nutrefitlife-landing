@@ -2,9 +2,12 @@ import { config, fields, collection, singleton } from '@keystatic/core';
 import React from 'react';
 
 export default config({
-  storage: {
-    kind: 'local',
-  },
+  storage: process.env.NODE_ENV === 'development' 
+    ? { kind: 'local' } 
+    : { 
+        kind: 'github', 
+        repo: 'Aguicarpy/nutrefitlife-landing' 
+      },
   ui: {
     brand: { 
       name: 'NutreFitLife Admin',

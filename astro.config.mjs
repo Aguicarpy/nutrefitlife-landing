@@ -8,7 +8,9 @@ export default defineConfig({
 
 
   integrations: [
-    react(), 
+    react({
+      include: ['**/@keystatic/**', '**/keystatic.config.ts']
+    }), 
     keystatic()
   ],
 
