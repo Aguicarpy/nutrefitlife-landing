@@ -1,8 +1,10 @@
 import { defineCollection, z } from 'astro:content';
 import { glob } from 'astro/loaders';
 
+// --- HEADER ---
 const header = defineCollection({
-  loader: glob({ pattern: "header.md", base: "./src/content/header" }),
+  // CAMBIO: Buscar .json en lugar de .md
+  loader: glob({ pattern: "header.json", base: "./src/content/header" }),
   schema: z.object({
     brandName: z.string(),
     logoPath: z.string(),
@@ -14,60 +16,62 @@ const header = defineCollection({
   }),
 });
 
+// --- HERO ---
 const hero = defineCollection({
-  loader: glob({ pattern: "hero.md", base: "./src/content/hero" }),
+  loader: glob({ pattern: "hero.json", base: "./src/content/hero" }),
   schema: z.object({
-    titleMain: z.string(),     // "NutreFitLife"
-    titleItalic: z.string(),   // "Group"
+    titleMain: z.string(),
+    titleItalic: z.string(),
     description: z.string(),
     logoPath: z.string(),
     whatsappLink: z.string().url(),
-    primaryBtnText: z.string(), // "CONSULTAR"
-    secondaryBtnText: z.string(), // "VER PRODUCTOS"
+    primaryBtnText: z.string(),
+    secondaryBtnText: z.string(),
   }),
 });
 
+// --- ABOUT ---
 const about = defineCollection({
-  loader: glob({ pattern: "about.md", base: "./src/content/about" }),
+  loader: glob({ pattern: "about.json", base: "./src/content/about" }),
   schema: z.object({
-    badge: z.string(), // "NOSOTROS"
-    title: z.string(), // "Comprometidos con tu máximo potencial"
-    titleItalic: z.string(), // "máximo potencial"
+    badge: z.string(),
+    title: z.string(),
+    titleItalic: z.string(),
     imagePath: z.string(),
     sections: z.array(z.object({
-      subtitle: z.string(), // "VISIÓN"
+      subtitle: z.string(),
       content: z.string()
     }))
   }),
 });
 
+// --- PRODUCTS ---
 const products = defineCollection({
-  // Loader para buscar archivos .md en la carpeta content
-  loader: glob({ pattern: "**/*.md", base: "./src/content/products" }), // Recomendado: apuntar a la subcarpeta products
+  // CAMBIO: pattern: "**/*.json"
+  loader: glob({ pattern: "**/*.json", base: "./src/content/products" }),
   schema: z.object({
     name: z.string(),
-    description: z.string(), // Resumen corto para la card
+    brand: z.string(),
     price: z.string(),
     category: z.string(),
-    brand: z.string(),
+    description: z.string(),
     image: z.string().optional(),
-    
-    // --- NUEVOS CAMPOS PARA EL DETALLE (MODAL) ---
-    fullDescription: z.string().optional(), // La info larga que vimos en tu captura
-    benefits: z.array(z.string()).optional(), // Lista de beneficios (ej: ["Mejora fuerza", "Recuperación"])
-    usage: z.string().optional(), // Modo de uso o recomendación
-    format: z.string().optional(), // Ej: "Polvo 250g", "Cápsulas", etc.
+    fullDescription: z.string().optional(),
+    benefits: z.array(z.string()).optional(),
+    usage: z.string().optional(),
+    format: z.string().optional(),
   }),
 });
 
+// --- CONSULTORIA ---
 const consultoria = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/consultoria" }),
+  loader: glob({ pattern: "**/*.json", base: "./src/content/consultoria" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
     professionalName: z.string(),
-    professionalHandle: z.string(), // @emilio.matiuda
-    socialLink: z.string().url(),   // Link a IG o TikTok
+    professionalHandle: z.string(),
+    socialLink: z.string().url(),
     image: z.string().optional(),
     features: z.array(z.object({
       title: z.string(),
@@ -76,8 +80,9 @@ const consultoria = defineCollection({
   }),
 });
 
+// --- LOGISTICA ---
 const logistica = defineCollection({
-  loader: glob({ pattern: "**/*.md", base: "./src/content/logistica" }),
+  loader: glob({ pattern: "logistica.json", base: "./src/content/logistica" }),
   schema: z.object({
     title: z.string(),
     localDelivery: z.object({
@@ -94,20 +99,20 @@ const logistica = defineCollection({
       scheduleDays: z.string(),
       note: z.string()
     }),
-    // Cambiado a un arreglo para soportar varias sedes con mapas
     locations: z.array(z.object({
       city: z.string(),
       area: z.string(),
       address: z.string(),
       googleMapsUrl: z.string().url(),
-      mapEmbedUrl: z.string().optional(), // Link del iframe de Google Maps
+      mapEmbedUrl: z.string().optional(),
       type: z.string().default("Venta Mayorista y Minorista")
     }))
   }),
 });
 
+// --- FOOTER ---
 const footer = defineCollection({
-  loader: glob({ pattern: "footer.md", base: "./src/content/footer" }),
+  loader: glob({ pattern: "footer.json", base: "./src/content/footer" }),
   schema: z.object({
     brandName: z.string(),
     description: z.string(),

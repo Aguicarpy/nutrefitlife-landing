@@ -1,0 +1,16 @@
+{
+  "badge": "NOSOTROS",
+  "title": "Comprometidos con tu",
+  "titleItalic": "máximo potencial",
+  "imagePath": "/assets/nutrefitlife_logo.png",
+  "sections": [
+    {
+      "subtitle": "VISIÓN",
+      "content": "Ser la referencia en nutrición personalizada, transformando la vida de las personas al empoderarlas con herramientas para vivir de manera más saludable y equilibrada."
+    },
+    {
+      "subtitle": "MISIÓN",
+      "content": "Ofrecer soluciones nutricionales que promuevan el rendimiento óptimo, combinando ciencia avanzada con experiencia profesional en Hernandarias."
+    }
+  ]
+}

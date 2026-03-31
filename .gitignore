@@ -33,3 +33,6 @@ pnpm-debug.log*
 # Archivos de sistema
 .DS_Store
 thumbs.db
+
+# Local Netlify folder
+.netlify
