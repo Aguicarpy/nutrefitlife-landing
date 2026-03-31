@@ -24,6 +24,7 @@ interface ProductData {
     category: string;
     brand: string;
     image?: string;
+    isOfficial: boolean;
   };
 }
 
@@ -82,10 +83,18 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               <AnimatePresence mode='popLayout'>
                 {currentProducts.map((product) => (
-                  <div key={product.id} onClick={() => setSelectedProduct(product)} className="cursor-pointer">
-                    <ProductCard {...product.data} />
-                  </div>
-                ))}
+  <div key={product.id} onClick={() => setSelectedProduct(product)} className="cursor-pointer">
+    <ProductCard 
+      name={product.data.name}
+      description={product.data.description}
+      price={product.data.price}
+      brand={product.data.brand}
+      image={product.data.image}
+      isOfficial={product.data.isOfficial} 
+      category={product.data.category}
+    />
+  </div>
+))}
               </AnimatePresence>
             </motion.div>
 

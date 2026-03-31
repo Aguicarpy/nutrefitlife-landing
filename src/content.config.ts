@@ -45,6 +45,15 @@ const about = defineCollection({
   }),
 });
 
+const brands = defineCollection({
+  // Agregamos el loader para que Astro encuentre los archivos JSON
+  loader: glob({ pattern: "**/*.json", base: "./src/content/brands" }),
+  schema: z.object({
+    name: z.string(),
+    isOfficial: z.boolean().default(false),
+  }),
+});
+
 // --- PRODUCTS ---
 const products = defineCollection({
   // CAMBIO: pattern: "**/*.json"
@@ -130,4 +139,4 @@ const footer = defineCollection({
   }),
 });
 
-export const collections = { products, consultoria, logistica, footer, about, hero, header };
+export const collections = { brands, products, consultoria, logistica, footer, about, hero, header };

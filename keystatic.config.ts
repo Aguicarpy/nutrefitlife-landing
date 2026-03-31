@@ -165,6 +165,19 @@ export default config({
     }),
   },
   collections: {
+    brands: collection({
+    label: '🏷️ Marcas',
+    path: 'src/content/brands/*',
+    slugField: 'name',
+    schema: {
+      name: fields.slug({ name: { label: 'Nombre de la Marca' } }),
+      isOfficial: fields.checkbox({
+        label: '¿Es Distribuidor Oficial?',
+        description: 'Si se marca, aparecerá la etiqueta negra en los productos.',
+        defaultValue: false
+      }),
+    },
+  }),
     products: collection({
       label: '📦 Productos',
       path: 'src/content/products/*',
@@ -173,7 +186,10 @@ export default config({
       columns: ['brand', 'category', 'price'],
       schema: {
         name: fields.slug({ name: { label: 'Nombre del Producto' } }),
-        brand: fields.text({ label: 'Marca' }),
+        brand: fields.relationship({
+        label: 'Marca',
+        collection: 'brands',
+      }),
         price: fields.text({ label: 'Precio' }),
         category: fields.text({ label: 'Categoría' }),
         description: fields.text({ label: 'Resumen Card' }),
