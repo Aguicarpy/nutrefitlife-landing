@@ -5,18 +5,14 @@ import keystatic from '@keystatic/astro';
 import netlify from '@astrojs/netlify';
 
 export default defineConfig({
-
-
-  integrations: [
-    react({
-      include: ['**/@keystatic/**', '**/keystatic.config.ts']
-    }), 
-    keystatic()
-  ],
-
+  integrations: [react(), keystatic()],
   adapter: netlify(),
-
+  output: 'server', 
   vite: {
-    plugins: [tailwindcss()]
+    plugins: [tailwindcss()],
+    ssr: {
+      // Esto obliga a Netlify a empaquetar Keystatic correctamente
+      noExternal: ['@keystatic/core', '@keystatic/astro']
+    }
   },
 });

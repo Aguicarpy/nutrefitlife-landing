@@ -4,10 +4,10 @@ import React from 'react';
 export default config({
   storage: process.env.NODE_ENV === 'development' 
     ? { kind: 'local' } 
-    : { 
-        kind: 'github', 
-        repo: 'Aguicarpy/nutrefitlife-landing' 
-      },
+    : { kind: 'cloud' },
+  cloud: {
+    project: 'nutrefitlife/nutrefitlife-landing',
+  },
   ui: {
     brand: { 
       name: 'NutreFitLife Admin',
