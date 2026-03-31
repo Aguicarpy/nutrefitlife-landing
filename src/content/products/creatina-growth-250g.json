@@ -1,0 +1,17 @@
+{
+  "name": "Creatina Monohidratada",
+  "brand": "growthsupplements",
+  "price": "225.000 Gs",
+  "category": "suplementos",
+  "description": "La máxima pureza en creatina para un rendimiento superior y aumento de fuerza.",
+  "fullDescription": "La Creatina Creapure® en Polvo de Growth Supplements es una de las formas más puras y eficaces de creatina disponible en el mercado. Proveniente de la reconocida marca alemana Creapure®, este suplemento garantiza una pureza del 99.9%, libre de impurezas y subproductos.",
+  "format": "Polvo (250 Gramos)",
+  "usage": "Consumir 3-5g al día, preferentemente antes o después del entrenamiento.",
+  "benefits": [
+    "Alta pureza y calidad, asegurando una mayor absorción",
+    "Mejora el rendimiento en actividades de alta intensidad",
+    "Ideal para incrementar la fuerza y la masa muscular magra",
+    "Aumenta la energía en los músculos para un mayor rendimiento"
+  ],
+  "image": "/assets/products/creatina-growth-250g/image.jpg"
+}
