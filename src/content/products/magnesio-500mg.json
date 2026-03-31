@@ -1,0 +1,16 @@
+{
+  "name": "magnesio-500mg",
+  "brand": "Earth's Creation",
+  "price": "95.000 Gs",
+  "category": "Suplementos",
+  "description": "Mineral esencial para el bienestar general y soporte muscular.",
+  "fullDescription": "El magnesio es un mineral esencial que participa en más de 300 procesos biológicos en el cuerpo, incluyendo el funcionamiento muscular, del sistema nervioso, la producción de energía y la fortaleza ósea.",
+  "format": "60 Tabletas",
+  "usage": "Consumir una tableta diaria o según recomendación médica.",
+  "benefits": [
+    "Apoya la salud ósea",
+    "Favorece la función nerviosa y muscular",
+    "Contribuye al buen funcionamiento del corazón"
+  ],
+  "image": "/assets/products/magnesium.jpg"
+}

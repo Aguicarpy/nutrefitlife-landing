@@ -1,0 +1,16 @@
+{
+  "name": "ashwagandha",
+  "brand": "Earth's Creation",
+  "price": "140.000 Gs",
+  "category": "Herbal",
+  "description": "Apoyo natural para la salud cognitiva y el manejo del estrés.",
+  "fullDescription": "Nuestra Ashwagandha ha sido formulada para respaldar la salud cerebral al proteger las células del cerebro y promover una memoria fuerte. Ayuda a regular las hormonas del estrés, como el cortisol, promoviendo una respuesta más saludable y reduciendo la ansiedad.",
+  "format": "60 Cápsulas",
+  "usage": "Tomar según indicación del profesional de salud, preferiblemente con las comidas.",
+  "benefits": [
+    "Apoya una respuesta saludable al estrés",
+    "Promueve la salud cognitiva",
+    "Favorece la relajación"
+  ],
+  "image": "/assets/products/ashwagandha.jpg"
+}

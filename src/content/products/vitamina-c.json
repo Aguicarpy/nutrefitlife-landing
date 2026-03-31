@@ -1,0 +1,16 @@
+{
+  "name": "vitamina-c-rose-hips",
+  "brand": "Earth's Creation",
+  "price": "130.000 Gs",
+  "category": "Vitaminas",
+  "description": "Potente antioxidante para el sistema inmunológico.",
+  "fullDescription": "Refuerza las defensas naturales y combate el daño celular. La combinación con Rose Hips mejora la absorción y aporta beneficios extra para la piel y la recuperación muscular.",
+  "format": "100 Tabletas",
+  "usage": "Tomar una tableta diaria para mantener niveles óptimos.",
+  "benefits": [
+    "Refuerza el sistema inmunológico",
+    "Antioxidante contra el envejecimiento prematuro",
+    "Acelera la recuperación muscular"
+  ],
+  "image": "/assets/products/vitamin-c.jpg"
+}

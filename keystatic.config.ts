@@ -32,7 +32,12 @@ export default config({
       format: { data: 'json' },
       schema: {
         brandName: fields.text({ label: 'Nombre de la Marca' }),
-        logoPath: fields.text({ label: 'Ruta del Logo' }),
+        // Cambio a Imagen
+        logoPath: fields.image({
+          label: 'Logo del Menú',
+          directory: 'public/assets/header',
+          publicPath: '/assets/header/',
+        }),
         contactLink: fields.url({ label: 'Enlace WhatsApp' }),
         navItems: fields.array(
           fields.object({
@@ -54,7 +59,12 @@ export default config({
         titleMain: fields.text({ label: 'Título Principal (Blanco)' }),
         titleItalic: fields.text({ label: 'Título Secundario (Rojo/Cursiva)' }),
         description: fields.text({ label: 'Descripción de Intro', multiline: true }),
-        logoPath: fields.text({ label: 'Ruta del Logo Central' }),
+        // Cambio a Imagen
+        logoPath: fields.image({
+          label: 'Logo Central Hero',
+          directory: 'public/assets/hero',
+          publicPath: '/assets/hero/',
+        }),
         whatsappLink: fields.url({ label: 'Link de WhatsApp' }),
         primaryBtnText: fields.text({ label: 'Texto Botón Principal' }),
         secondaryBtnText: fields.text({ label: 'Texto Botón Secundario' }),
@@ -68,7 +78,12 @@ export default config({
         badge: fields.text({ label: 'Etiqueta pequeña (Ej: NOSOTROS)' }),
         title: fields.text({ label: 'Título Principal' }),
         titleItalic: fields.text({ label: 'Texto en Cursiva' }),
-        imagePath: fields.text({ label: 'Imagen Lateral' }),
+        // Cambio a Imagen
+        imagePath: fields.image({
+          label: 'Imagen Lateral Nosotros',
+          directory: 'public/assets/about',
+          publicPath: '/assets/about/',
+        }),
         sections: fields.array(
           fields.object({
             subtitle: fields.text({ label: 'Subtítulo (Misión/Visión)' }),
@@ -124,7 +139,12 @@ export default config({
       schema: {
         brandName: fields.text({ label: 'Nombre en Footer' }),
         description: fields.text({ label: 'Texto bajo el logo', multiline: true }),
-        logoPath: fields.text({ label: 'Ruta del Logo' }),
+        // Cambio a Imagen
+        logoPath: fields.image({
+          label: 'Logo del Footer',
+          directory: 'public/assets/footer',
+          publicPath: '/assets/footer/',
+        }),
         officialBrands: fields.array(fields.text({ label: 'Nombre de Marca' }), { label: 'Marcas que distribuimos' }),
         socials: fields.array(
           fields.object({
@@ -150,7 +170,6 @@ export default config({
       path: 'src/content/products/*',
       format: { data: 'json' },
       slugField: 'name',
-      // Eliminamos itemLabel/getItemLabel de aquí. Keystatic usará 'name' automáticamente.
       columns: ['brand', 'category', 'price'],
       schema: {
         name: fields.slug({ name: { label: 'Nombre del Producto' } }),
@@ -162,7 +181,12 @@ export default config({
         format: fields.text({ label: 'Presentación' }),
         usage: fields.text({ label: 'Modo de Uso', multiline: true }),
         benefits: fields.array(fields.text({ label: 'Beneficio' }), { label: 'Lista de Beneficios' }),
-        image: fields.text({ label: 'Ruta Imagen' }),
+        // Cambio a Imagen
+        image: fields.image({
+          label: 'Imagen del Producto',
+          directory: 'public/assets/products',
+          publicPath: '/assets/products/',
+        }),
       },
     }),
     consultoria: collection({
@@ -177,7 +201,12 @@ export default config({
         description: fields.text({ label: 'Biografía / Info', multiline: true }),
         professionalHandle: fields.text({ label: 'Instagram (@...)' }),
         socialLink: fields.url({ label: 'Link Instagram' }),
-        image: fields.text({ label: 'Foto Perfil (Ruta)' }),
+        // Cambio a Imagen
+        image: fields.image({
+          label: 'Foto de Perfil',
+          directory: 'public/assets/consultoria',
+          publicPath: '/assets/consultoria/',
+        }),
         features: fields.array(
           fields.object({
             title: fields.text({ label: 'Título Ítem' }),
