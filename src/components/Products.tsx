@@ -3,45 +3,46 @@ import { motion, AnimatePresence } from 'motion/react';
 import { ProductCard } from './ProductCard';
 import { X, Info, ClipboardList, Zap } from 'lucide-react';
 
-const categories = [
-  { id: 'todos', name: 'TODOS' },
-  { id: 'creatinas', name: 'CREATINAS' },
-  { id: 'vitaminas', name: 'VITAMINAS' },
-  { id: 'magnesio', name: 'MAGNESIO' },
-  { id: 'herbal', name: 'HERBAL' }
-];
+interface Category {
+  id: string;
+  name: string;
+}
 
 interface ProductData {
   id: string;
   data: {
     name: string;
     description: string;
-    fullDescription?: string; // Info extendida
-    benefits?: string[];      // Lista de beneficios
-    usage?: string;           // Recomendación de uso
-    format?: string;          // Polvo, capsulas, etc.
+    fullDescription?: string;
+    benefits?: string[];
+    usage?: string;
+    format?: string;
     price: string;
-    category: string;
+    category: string; // Este es el ID de la categoría (ej: 'creatinas')
     brand: string;
     image?: string;
     isOfficial: boolean;
   };
 }
 
-export function Products({ initialProducts }: { initialProducts: ProductData[] }) {
+export function Products({ 
+  initialProducts, 
+  categories 
+}: { 
+  initialProducts: ProductData[], 
+  categories: Category[] 
+}) {
   const [activeCategory, setActiveCategory] = useState('todos');
   const [selectedProduct, setSelectedProduct] = useState<ProductData | null>(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const productsPerPage = 6; // Ajusta según prefieras
+  const productsPerPage = 6;
 
-  // Resetear página al cambiar categoría
   useEffect(() => { setCurrentPage(1); }, [activeCategory]);
 
   const filteredProducts = activeCategory === 'todos'
     ? initialProducts
     : initialProducts.filter(p => p.data.category === activeCategory);
 
-  // Lógica de Paginación
   const indexOfLastProduct = currentPage * productsPerPage;
   const indexOfFirstProduct = indexOfLastProduct - productsPerPage;
   const currentProducts = filteredProducts.slice(indexOfFirstProduct, indexOfLastProduct);
@@ -51,21 +52,22 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
     <section id="products" className="relative py-32 bg-white overflow-hidden">
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         
-        {/* Cabecera (Se mantiene igual...) */}
         <div className="text-center mb-20">
           <span className="text-[10px] font-bold tracking-[0.4em] text-gray-400 mb-4 block uppercase">CATÁLOGO</span>
           <h2 className="text-5xl md:text-6xl font-light mb-8 tracking-tight text-black">Nuestros Productos</h2>
           <div className="w-12 h-px bg-black mx-auto" />
         </div>
 
-        {/* Filtros */}
+        {/* Botones de categorías dinámicos */}
         <div className="flex flex-wrap justify-center gap-3 mb-20">
           {categories.map((category) => (
             <button
               key={category.id}
               onClick={() => setActiveCategory(category.id)}
               className={`px-8 py-3 text-[10px] font-bold tracking-[0.2em] transition-all border ${
-                activeCategory === category.id ? 'bg-black text-white border-black' : 'text-gray-400 border-gray-100 hover:border-gray-300'
+                activeCategory === category.id 
+                  ? 'bg-black text-white border-black' 
+                  : 'text-gray-400 border-gray-100 hover:border-gray-300'
               }`}
             >
               {category.name}
@@ -73,7 +75,6 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
           ))}
         </div>
 
-        {/* Grilla y Mensaje de Vacío */}
         {filteredProducts.length === 0 ? (
           <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} className="text-center py-20 border border-dashed border-gray-100">
             <p className="text-gray-400 font-light tracking-widest text-sm uppercase">No hay productos disponibles en esta categoría</p>
@@ -83,18 +84,18 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
             <motion.div layout className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
               <AnimatePresence mode='popLayout'>
                 {currentProducts.map((product) => (
-  <div key={product.id} onClick={() => setSelectedProduct(product)} className="cursor-pointer">
-    <ProductCard 
-      name={product.data.name}
-      description={product.data.description}
-      price={product.data.price}
-      brand={product.data.brand}
-      image={product.data.image}
-      isOfficial={product.data.isOfficial} 
-      category={product.data.category}
-    />
-  </div>
-))}
+                  <div key={product.id} onClick={() => setSelectedProduct(product)} className="cursor-pointer">
+                    <ProductCard 
+                      name={product.data.name}
+                      description={product.data.description}
+                      price={product.data.price}
+                      brand={product.data.brand}
+                      image={product.data.image}
+                      isOfficial={product.data.isOfficial} 
+                      category={product.data.category}
+                    />
+                  </div>
+                ))}
               </AnimatePresence>
             </motion.div>
 
@@ -118,7 +119,7 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
         )}
       </div>
 
-      {/* MODAL DE DETALLE (Basado en tu imagen) */}
+      {/* Modal - Se mantiene igual */}
       <AnimatePresence>
         {selectedProduct && (
           <motion.div 
@@ -136,12 +137,10 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
               </button>
 
               <div className="grid md:grid-cols-2 gap-12">
-                {/* Imagen en el Modal */}
                 <div className="aspect-square bg-gray-50 flex items-center justify-center border border-gray-100">
                   <img src={selectedProduct.data.image} alt={selectedProduct.data.name} className="object-contain w-full h-full p-8" />
                 </div>
 
-                {/* Info Detallada */}
                 <div className="flex flex-col">
                   <span className="text-[10px] font-bold tracking-[0.3em] text-gray-400 mb-2 uppercase">{selectedProduct.data.brand}</span>
                   <h3 className="text-3xl font-light mb-4 tracking-tight">{selectedProduct.data.name}</h3>
@@ -156,7 +155,7 @@ export function Products({ initialProducts }: { initialProducts: ProductData[] }
                       </div>
                     </div>
 
-                    {selectedProduct.data.benefits && (
+                    {selectedProduct.data.benefits && selectedProduct.data.benefits.length > 0 && (
                       <div className="flex gap-4">
                         <Zap size={18} className="text-gray-300 shrink-0" />
                         <div>

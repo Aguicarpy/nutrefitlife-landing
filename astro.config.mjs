@@ -11,7 +11,6 @@ export default defineConfig({
   vite: {
     plugins: [tailwindcss()],
     ssr: {
-      // Esto obliga a Netlify a empaquetar Keystatic correctamente
       noExternal: ['@keystatic/core', '@keystatic/astro']
     }
   },

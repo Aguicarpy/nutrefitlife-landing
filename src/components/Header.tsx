@@ -47,7 +47,6 @@ export function Header({ data }: HeaderProps) {
     >
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         <div className="flex items-center justify-between h-20 min-w-0">
-          {/* LOGO / BRAND */}
           <button 
             onClick={() => scrollToSection('hero')} 
             className="flex items-center gap-3 min-w-0 group"
@@ -62,7 +61,6 @@ export function Header({ data }: HeaderProps) {
             </span>
           </button>
 
-          {/* DESKTOP NAV */}
           <nav className="hidden md:flex items-center gap-8 lg:gap-10 text-black">
             {data.navItems.map((item) => (
               <button
@@ -83,7 +81,6 @@ export function Header({ data }: HeaderProps) {
             </a>
           </nav>
 
-          {/* MOBILE TOGGLE */}
           <button 
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} 
             className="md:hidden p-2"
@@ -94,7 +91,6 @@ export function Header({ data }: HeaderProps) {
         </div>
       </div>
 
-      {/* MOBILE MENU */}
       {isMobileMenuOpen && (
         <div className="md:hidden bg-white border-t border-gray-100 animate-in fade-in slide-in-from-top-4 duration-300 overflow-hidden">
           <nav className="flex flex-col p-6 gap-6">

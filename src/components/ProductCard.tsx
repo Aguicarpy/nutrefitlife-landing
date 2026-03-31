@@ -22,19 +22,19 @@ export function ProductCard({ name, description, price, image, brand, isOfficial
       <div className="aspect-square bg-gray-50 flex items-center justify-center border-b border-gray-100 relative overflow-hidden p-6">
         
         {isOfficial && (
-      <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-black px-3 py-1 shadow-sm">
-        <ShieldCheck size={12} className="text-black" />
-        <span className="text-[8px] font-bold tracking-[0.1em] text-black uppercase">Distribuidor Oficial</span>
-      </div>
-    )}
+          <div className="absolute top-4 left-4 z-20 flex items-center gap-1.5 bg-white/90 backdrop-blur-md border border-black px-3 py-1 shadow-sm">
+            <ShieldCheck size={12} className="text-black" />
+            <span className="text-[8px] font-bold tracking-[0.1em] text-black uppercase">Distribuidor Oficial</span>
+          </div>
+        )}
 
         {image ? (
-    <img 
-      src={image} 
-      alt={name} 
-      className="object-contain w-full h-full group-hover:scale-110 transition-transform duration-700" 
-    />
-  ) : (
+          <img 
+            src={image} 
+            alt={name} 
+            className="object-contain w-full h-full group-hover:scale-110 transition-transform duration-700" 
+          />
+        ) : (
           <div className="text-4xl opacity-10 group-hover:opacity-20 transition-opacity">
             <MessageCircle size={80} strokeWidth={1} />
           </div>

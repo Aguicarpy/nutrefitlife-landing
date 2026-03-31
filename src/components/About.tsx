@@ -23,7 +23,6 @@ export function About({ data }: AboutProps) {
   return (
     <section id="about" className="relative py-40 bg-white overflow-hidden w-full">
       
-      {/* Elemento decorativo de fondo */}
       <motion.div
         className="absolute top-0 right-0 w-1/3 h-full bg-gray-50/50 pointer-events-none"
         style={{ x: scrollY * 0.05 }}
@@ -32,7 +31,6 @@ export function About({ data }: AboutProps) {
       <div className="relative z-10 max-w-7xl mx-auto px-6 lg:px-12">
         <div className="grid lg:grid-cols-12 gap-16 items-center">
           
-          {/* LADO IZQUIERDO: TEXTO PRINCIPAL */}
           <div className="lg:col-span-7 min-w-0">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -70,7 +68,6 @@ export function About({ data }: AboutProps) {
             </div>
           </div>
 
-          {/* LADO DERECHO: LOGO */}
           <motion.div 
             className="lg:col-span-5 flex justify-center lg:justify-end items-center min-w-0"
             initial={{ opacity: 0, x: 50 }}

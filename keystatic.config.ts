@@ -22,7 +22,7 @@ export default config({
     navigation: {
       '🏠 Identidad y Menú': ['header', 'footer'],
       '🚀 Secciones de la Web': ['hero', 'about', 'logistica'],
-      '📦 Gestión de Tienda': ['products', 'consultoria'],
+      '📦 Gestión de Tienda': ['categories', 'brands','products', 'consultoria'],
     },
   },
   singletons: {
@@ -32,7 +32,6 @@ export default config({
       format: { data: 'json' },
       schema: {
         brandName: fields.text({ label: 'Nombre de la Marca' }),
-        // Cambio a Imagen
         logoPath: fields.image({
           label: 'Logo del Menú',
           directory: 'public/assets/header',
@@ -59,7 +58,6 @@ export default config({
         titleMain: fields.text({ label: 'Título Principal (Blanco)' }),
         titleItalic: fields.text({ label: 'Título Secundario (Rojo/Cursiva)' }),
         description: fields.text({ label: 'Descripción de Intro', multiline: true }),
-        // Cambio a Imagen
         logoPath: fields.image({
           label: 'Logo Central Hero',
           directory: 'public/assets/hero',
@@ -78,7 +76,6 @@ export default config({
         badge: fields.text({ label: 'Etiqueta pequeña (Ej: NOSOTROS)' }),
         title: fields.text({ label: 'Título Principal' }),
         titleItalic: fields.text({ label: 'Texto en Cursiva' }),
-        // Cambio a Imagen
         imagePath: fields.image({
           label: 'Imagen Lateral Nosotros',
           directory: 'public/assets/about',
@@ -139,7 +136,6 @@ export default config({
       schema: {
         brandName: fields.text({ label: 'Nombre en Footer' }),
         description: fields.text({ label: 'Texto bajo el logo', multiline: true }),
-        // Cambio a Imagen
         logoPath: fields.image({
           label: 'Logo del Footer',
           directory: 'public/assets/footer',
@@ -165,19 +161,29 @@ export default config({
     }),
   },
   collections: {
-    brands: collection({
-    label: '🏷️ Marcas',
-    path: 'src/content/brands/*',
+    categories: collection({
+    label: '📁 Categorías',
+    path: 'src/content/categories/*',
+    format: { data: 'json' },
     slugField: 'name',
     schema: {
-      name: fields.slug({ name: { label: 'Nombre de la Marca' } }),
-      isOfficial: fields.checkbox({
-        label: '¿Es Distribuidor Oficial?',
-        description: 'Si se marca, aparecerá la etiqueta negra en los productos.',
-        defaultValue: false
-      }),
+      name: fields.slug({ name: { label: 'Nombre de la Categoría' } }),
     },
   }),
+    brands: collection({
+      label: '🏷️ Marcas',
+      path: 'src/content/brands/*',
+      format: { data: 'json' },
+      slugField: 'name',
+      schema: {
+        name: fields.slug({ name: { label: 'Nombre de la Marca' } }),
+        isOfficial: fields.checkbox({
+          label: '¿Es Distribuidor Oficial?',
+          description: 'Si se marca, aparecerá la etiqueta negra en los productos.',
+          defaultValue: false
+        }),
+      },
+    }),
     products: collection({
       label: '📦 Productos',
       path: 'src/content/products/*',
@@ -191,13 +197,12 @@ export default config({
         collection: 'brands',
       }),
         price: fields.text({ label: 'Precio' }),
-        category: fields.text({ label: 'Categoría' }),
+        category: fields.relationship({ label: 'Categoría', collection: 'categories' }),
         description: fields.text({ label: 'Resumen Card' }),
         fullDescription: fields.text({ label: 'Detalle Completo', multiline: true }),
         format: fields.text({ label: 'Presentación' }),
         usage: fields.text({ label: 'Modo de Uso', multiline: true }),
         benefits: fields.array(fields.text({ label: 'Beneficio' }), { label: 'Lista de Beneficios' }),
-        // Cambio a Imagen
         image: fields.image({
           label: 'Imagen del Producto',
           directory: 'public/assets/products',
@@ -217,7 +222,6 @@ export default config({
         description: fields.text({ label: 'Biografía / Info', multiline: true }),
         professionalHandle: fields.text({ label: 'Instagram (@...)' }),
         socialLink: fields.url({ label: 'Link Instagram' }),
-        // Cambio a Imagen
         image: fields.image({
           label: 'Foto de Perfil',
           directory: 'public/assets/consultoria',

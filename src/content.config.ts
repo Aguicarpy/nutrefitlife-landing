@@ -3,7 +3,6 @@ import { glob } from 'astro/loaders';
 
 // --- HEADER ---
 const header = defineCollection({
-  // CAMBIO: Buscar .json en lugar de .md
   loader: glob({ pattern: "header.json", base: "./src/content/header" }),
   schema: z.object({
     brandName: z.string(),
@@ -45,8 +44,14 @@ const about = defineCollection({
   }),
 });
 
+const categories = defineCollection({
+  loader: glob({ pattern: "**/*.json", base: "./src/content/categories" }),
+  schema: z.object({
+    name: z.string(),
+  }),
+});
+
 const brands = defineCollection({
-  // Agregamos el loader para que Astro encuentre los archivos JSON
   loader: glob({ pattern: "**/*.json", base: "./src/content/brands" }),
   schema: z.object({
     name: z.string(),
@@ -56,7 +61,6 @@ const brands = defineCollection({
 
 // --- PRODUCTS ---
 const products = defineCollection({
-  // CAMBIO: pattern: "**/*.json"
   loader: glob({ pattern: "**/*.json", base: "./src/content/products" }),
   schema: z.object({
     name: z.string(),
@@ -139,4 +143,4 @@ const footer = defineCollection({
   }),
 });
 
-export const collections = { brands, products, consultoria, logistica, footer, about, hero, header };
+export const collections = {categories, brands, products, consultoria, logistica, footer, about, hero, header };

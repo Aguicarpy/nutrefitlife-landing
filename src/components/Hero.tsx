@@ -40,7 +40,6 @@ export function Hero({ data }: HeroProps) {
 
   return (
     <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-white w-full">
-      {/* Background Parallax */}
       <motion.div
         className="absolute inset-0 bg-gradient-to-b from-gray-50 to-white pointer-events-none"
         style={{ y: scrollY * 0.5 }}
@@ -53,7 +52,6 @@ export function Hero({ data }: HeroProps) {
           transition={{ duration: 0.8 }}
           className="text-center min-w-0"
         >
-          {/* Logo Parallax */}
           <motion.img
             src={data.logoPath} 
             alt={data.titleMain}
@@ -89,7 +87,6 @@ export function Hero({ data }: HeroProps) {
         </motion.div>
       </div>
 
-      {/* Scroll Indicator */}
       <motion.div
         className="absolute bottom-10 left-1/2 -translate-x-1/2 hidden md:block"
         animate={{ y: [0, 10, 0] }}

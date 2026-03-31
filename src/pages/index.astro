@@ -12,25 +12,29 @@ import { getCollection, getEntry } from 'astro:content';
 const headerEntry = await getEntry('header', 'header');
 const heroEntry = await getEntry('hero', 'hero');
 const aboutEntry = await getEntry('about', 'about');
-const allProducts = await getCollection('products');
 const consultoriaEntry = await getEntry('consultoria', 'emilio-matiauda');
 const logisticaEntry = await getEntry('logistica', 'logistica');
 const footerEntry = await getEntry('footer', 'footer');
 
-// 2. Cargamos Productos y Marcas para unirlos
 const rawProducts = await getCollection('products');
 const allBrands = await getCollection('brands');
+const allCategoriesEntries = await getCollection('categories');
 
-// 3. Cruzamos los datos: por cada producto, buscamos su marca oficial
+const dynamicCategories = [
+  { id: 'todos', name: 'TODOS' },
+  ...allCategoriesEntries.map(cat => ({
+    id: cat.id,
+    name: cat.data.name.toUpperCase()
+  }))
+];
+
 const productsWithBrandData = rawProducts.map(product => {
-  // Buscamos la marca cuyo ID coincida con lo que el usuario eligió en el producto
   const brandInfo = allBrands.find(b => b.id === product.data.brand);
   
   return {
     ...product,
     data: {
       ...product.data,
-      // Le pasamos el nombre real de la marca y si es oficial o no
       brand: brandInfo?.data.name || product.data.brand, 
       isOfficial: brandInfo?.data.isOfficial || false
     }
@@ -38,14 +42,17 @@ const productsWithBrandData = rawProducts.map(product => {
 });
 ---
 
-
 <Layout title="NutreFitLife Group">
   {headerEntry && <Header client:load data={headerEntry.data} />}
   <main>
     {heroEntry && <Hero client:load data={heroEntry.data} />}
     {aboutEntry && <About client:visible data={aboutEntry.data} />}
     
-    <Products client:visible initialProducts={productsWithBrandData} />
+    <Products 
+      client:visible 
+      initialProducts={productsWithBrandData} 
+      categories={dynamicCategories} 
+    />
     
     {consultoriaEntry && <Consultoria client:visible data={consultoriaEntry.data} />}
     {logisticaEntry && <DeliveryInfo client:visible data={logisticaEntry.data} />}

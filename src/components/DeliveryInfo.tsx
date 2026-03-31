@@ -6,7 +6,7 @@ interface DeliveryProps {
     title: string;
     localDelivery: any;
     nationalShipping: any;
-    locations: any[]; // Cambiado a array
+    locations: any[];
   };
 }
 
@@ -17,7 +17,6 @@ export function DeliveryInfo({ data }: DeliveryProps) {
     <section id="delivery" className="py-32 bg-gray-50 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6 lg:px-12">
         
-        {/* Cabecera */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -29,7 +28,6 @@ export function DeliveryInfo({ data }: DeliveryProps) {
           <div className="w-12 h-px bg-black mx-auto" />
         </motion.div>
 
-        {/* Tarjetas de Servicio */}
         <div className="grid md:grid-cols-2 gap-8 mb-20">
           <DeliveryCard 
             icon={<Truck size={40} strokeWidth={1} />}
@@ -51,7 +49,6 @@ export function DeliveryInfo({ data }: DeliveryProps) {
           />
         </div>
 
-        {/* Sección de Sedes/Mapas */}
         <div className="space-y-8">
           <div className="text-center mb-12">
              <h3 className="text-[10px] font-bold tracking-[0.4em] text-gray-400 uppercase">Puntos de Retiro y Ubicación</h3>
@@ -67,7 +64,6 @@ export function DeliveryInfo({ data }: DeliveryProps) {
                 transition={{ duration: 0.6, delay: index * 0.1 }}
                 className="bg-black text-white flex flex-col md:flex-row overflow-hidden group border border-white/5"
               >
-                {/* Lado del Mapa */}
                 <div className="w-full md:w-1/2 h-64 md:h-auto min-h-[350px] bg-gray-900 relative">
                   {loc.mapEmbedUrl ? (
                     <iframe 
@@ -83,7 +79,6 @@ export function DeliveryInfo({ data }: DeliveryProps) {
                   )}
                 </div>
 
-                {/* Lado de la Info */}
                 <div className="p-10 md:p-12 flex flex-col justify-center w-full md:w-1/2">
                   <MapPin size={20} className="mb-6 text-gray-600" />
                   <h4 className="text-[10px] font-bold tracking-[0.4em] text-gray-500 mb-2 uppercase">{loc.city}</h4>
