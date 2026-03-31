@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@layer base {
+  html, body {
+    /* Evita el scroll horizontal en toda la web */
+    max-width: 100vw;
+    overflow-x: hidden;
+  }
+
+  p, h1, h2, h3, h4, h5, h6, span, a {
+    /* Fuerza el quiebre de palabras larguísimas */
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+    word-break: break-word;
+    
+    /* Evita que contenedores flexibles se expandan por culpa del texto */
+    min-width: 0;
+  }
+}

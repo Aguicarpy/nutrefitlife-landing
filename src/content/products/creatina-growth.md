@@ -1,0 +1,15 @@
+---
+name: "Creatina Monohidratada"
+brand: "Growth Supplements"
+price: "₲ 170.000"
+category: "creatinas"
+description: "Creatina pura de alta calidad 250g."
+fullDescription: "La Creatina Monohidratada de Growth es ideal para mejorar el rendimiento en entrenamientos de alta intensidad..."
+format: "Polvo, 250 gramos"
+usage: "Consumir 3-5g al día, preferentemente antes o después del entrenamiento."
+benefits: 
+  - "Mejora la fuerza muscular y potencia"
+  - "Recuperación rápida post-ejercicio"
+  - "Aumenta la energía muscular"
+image: "/assets/products/creatina.png"
+---

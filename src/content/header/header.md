@@ -1,0 +1,14 @@
+---
+brandName: "NutreFitLife Group"
+logoPath: "/assets/nutrefitlife_logo.png"
+contactLink: "https://wa.link/ncmuob"
+navItems:
+  - label: "NOSOTROS"
+    sectionId: "about"
+  - label: "PRODUCTOS"
+    sectionId: "products"
+  - label: "CONSULTORÍA"
+    sectionId: "consultoria"
+  - label: "ENVIOS"
+    sectionId: "envios"
+---

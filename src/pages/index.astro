@@ -1,0 +1,32 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { Header } from '../components/Header';
+import { Hero } from '../components/Hero';
+import { About } from '../components/About';
+import { Products } from '../components/Products';
+import { Consultoria } from '../components/Consultoria';
+import { DeliveryInfo } from '../components/DeliveryInfo';
+import { Footer } from '../components/Footer';
+import { getCollection, getEntry } from 'astro:content';
+
+const headerEntry = await getEntry('header', 'header');
+const heroEntry = await getEntry('hero', 'hero');
+const aboutEntry = await getEntry('about', 'about');
+const allProducts = await getCollection('products');
+const consultoriaEntry = await getEntry('consultoria', 'emilio');
+const logisticaEntry = await getEntry('logistica', 'info');
+const footerEntry = await getEntry('footer', 'footer');
+---
+
+
+<Layout title="NutreFitLife Group">
+   {headerEntry && <Header client:load data={headerEntry.data} />}
+  <main>
+    {heroEntry && <Hero client:load data={heroEntry.data} />}
+    {aboutEntry && <About client:visible data={aboutEntry.data} />}
+    <Products client:visible initialProducts={allProducts} />
+   	{consultoriaEntry && <Consultoria client:visible data={consultoriaEntry.data} />}
+	{logisticaEntry && <DeliveryInfo client:visible data={logisticaEntry.data} />}
+	{footerEntry && <Footer client:visible data={footerEntry.data} />}
+  </main>
+</Layout>
